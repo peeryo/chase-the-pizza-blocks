@@ -1,11 +1,12 @@
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function on_on_overlap(sprite: Sprite, otherSprite: Sprite) {
-    info.changeScoreBy(1)
-    pizza.setPosition(randint(10, 160), randint(10, 120))
-    info.startCountdown(10)
-})
-let pizza : Sprite = null
-scene.setBackgroundColor(3)
-let mySprite = sprites.create(img`
+def on_on_overlap(sprite, otherSprite):
+    info.change_score_by(1)
+    pizza.set_position(randint(10, 160), randint(10, 120))
+    info.start_countdown(10)
+sprites.on_overlap(SpriteKind.player, SpriteKind.food, on_on_overlap)
+
+pizza: Sprite = None
+scene.set_background_color(3)
+mySprite = sprites.create(img("""
     ........................
     .......fff..............
     ....fffff2f.............
@@ -30,9 +31,10 @@ let mySprite = sprites.create(img`
     ........................
     ........................
     ........................
-`, SpriteKind.Player)
-controller.moveSprite(mySprite)
-pizza = sprites.create(img`
+"""),
+    SpriteKind.player)
+controller.move_sprite(mySprite)
+pizza = sprites.create(img("""
     .............beebbbb............
     ............eebbbb4bb...........
     ............eb344bb4bb..........
@@ -65,4 +67,5 @@ pizza = sprites.create(img`
     41d4555d4ee........44...........
     41554eede.......................
     44ee...4e.......................
-`, SpriteKind.Food)
+"""),
+    SpriteKind.food)
